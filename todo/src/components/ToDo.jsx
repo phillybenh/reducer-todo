@@ -1,14 +1,14 @@
 import React from "react";
 
 const ToDo = (props) => {
-  const completed = () => {
-    props.dispatch({ type: "TOGGLE_COMPLETED", payload: props.todo });
-  };
-  
+
+
+  console.log("to do", props)
+
   return (
     <div class="ToDo">
-      <input type="checkbox" onClick={completed} />
-      {props.todo}
+      <input type="checkbox" onClick={() => props.completed(props.todo.id)} />
+      {props.todo.item}
     </div>
   );
 };

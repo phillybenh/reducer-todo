@@ -3,7 +3,6 @@ import { initialState, reducer } from "./reducers/reducer";
 import ToDoList from "./components/ToDoList";
 import ToDoForm from "./components/ToDoForm";
 
-// import "./components/ToDo.css";
 import "./App.css";
 
 function App() {
@@ -18,19 +17,25 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewToDo("");
-    dispatch({ type: "ADD_TODO", payload: newToDo });
+    dispatch({ type: "NEW_TODO", payload: newToDo });
   };
+
+    const completed = (id) => {
+      dispatch({ type: "TOGGLE_COMPLETED", payload: id });
+    };
 
   const clearCompleted = () => {
     dispatch({ type: "CLEARED" });
   };
+
+  console.log("appJS", state)
 
   return (
     <div className="App">
       <div className="App-header">
         <h1>To Do List</h1>
       </div>
-      <ToDoList state={state} dispatch={dispatch} />
+      <ToDoList state={state} dispatch={dispatch} completed={completed} />
       <ToDoForm
         newToDo={newToDo}
         handleChange={handleChange}

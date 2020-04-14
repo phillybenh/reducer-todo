@@ -1,5 +1,3 @@
-import React from "react";
-//, { useState, useReducer }
 
 const initialState = {
   todos: [
@@ -15,6 +13,7 @@ const initialState = {
     },
   ],
 };
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "NEW_TODO":
@@ -34,13 +33,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         todos: state.todos.map((todo) => {
-          if (todo.id === action.payload.id) {
+          if (todo.id === action.payload) {
             return { ...todo, completed: !todo.completed };
           } else {
             return todo;
           }
         }),
       };
+
     case "CLEARED":
       return {
         ...state,
